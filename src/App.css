@@ -1,32 +1,4 @@
-* {
-    box-sizing: border-box;
-}
-
-img {
-    height: 350px;
-    margin: 10px;
-}
-
-.allUsers {
+.users_posts {
     display: flex;
-    flex-wrap: wrap;
-}
 
-.User {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid cornflowerblue;
-    padding: 10px;
-    margin: 10px;
-}
-
-.userAva {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 400px;
 }
