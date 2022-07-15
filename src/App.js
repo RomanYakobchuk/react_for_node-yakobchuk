@@ -1,22 +1,17 @@
-import React, {useState} from 'react';
-import css from './App.module.css'
-import {Posts, UserInfo, Users} from "./components";
+import React from 'react';
+// import css from './App.module.css'
+import {UserFrom, Users} from "./components";
 
 
 const App = () => {
 
-    const [user, setUser] = useState(null);
-    const [userIdForPost, setUserIdForPost] = useState(null);
-
     return (
         <div>
-            <div>
-                <Users setUser={setUser} setUserIdForPost={setUserIdForPost}/>
-                {user && <UserInfo user={user} key={user.id} setUserIdForPost={setUserIdForPost}/>}
-
-            </div>
-            {userIdForPost && <Posts userId={userIdForPost}/>}
+            <UserFrom/>
+            <hr/>
+            <Users/>
         </div>
+
     );
 };
 

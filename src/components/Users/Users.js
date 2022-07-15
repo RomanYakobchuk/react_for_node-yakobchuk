@@ -1,19 +1,22 @@
 import {useEffect, useState} from "react";
-import {usersService} from "../../services";
 import {User} from "../User/User";
+import {userService} from "../../services";
 
-const Users = ({setUser, setUserIdForPost}) => {
+const Users = () => {
 
     const [users, setUsers] = useState(null);
 
 
     useEffect(() => {
-        usersService.getAll().then(({data})=> setUsers(data))
+        userService.getAllUsers().then(({data})=> setUsers(data.data))
     }, [])
 
     return (
         <div>
-            {users ? users.map((user) => <User key={user.id} user={user} setUser={setUser} setUserIdForPost={setUserIdForPost}/>) : "Loading..."}
+            {users
+                ? users.map((user) => <User key={user._id} user={user}/>)
+                : "Loading..."
+            }
         </div>
     );
 };

@@ -1,17 +1,14 @@
 
-const User = ({user, setUser, setUserIdForPost}) => {
+const User = ({user}) => {
 
-    const click = () => {
-        setUserIdForPost(false)
-        setUser(user)
-    }
-
+    const {_id, name, age, avatar} = user;
 
     return (
         <div>
-            {user.name}
-            <input type="button" value={'Show info'} onClick={click}/>
-            <hr/>
+            <div>Id: {_id}</div>
+            <div>Name: {name}</div>
+            <div>Age: {age}</div>
+            <img className={'img'} src={avatar} alt=""/>
         </div>
     );
 };
