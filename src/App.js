@@ -11,10 +11,10 @@ function App() {
 
     return (
         <div className={css.users_posts}>
-            {/*{singleUser && <SingleUser user={singleUser}/>}*/}
-            {/*<Users getUser={setSingleUser}/>*/}
+            {singleUser && <SingleUser user={singleUser}/>}
+            <Users getUser={setSingleUser}/>
             {/*<Form1/>*/}
-            <Form2/>
+            {/*<Form2/>*/}
         </div>
     );
 }

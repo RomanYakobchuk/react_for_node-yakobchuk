@@ -4,7 +4,7 @@ import css from './User.module.css'
 
 export const User = ({user, getUserId, getUser}) => {
 
-    const {id, name, username } = user;
+    const {_id, name, username } = user;
 
 
     return (
@@ -12,7 +12,7 @@ export const User = ({user, getUserId, getUser}) => {
             <p>Name: {name}</p>
             <p>Username: {username}</p>
             <button className={css.button} onClick={() => {
-                getUserId(id)
+                getUserId(_id)
                 getUser(user)
             }}>Info</button>
         </div>

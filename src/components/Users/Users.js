@@ -12,19 +12,19 @@ export const Users = ({getUser}) => {
 
     useEffect(() => {
         userService.getAll().then(({data}) => {
-            setUsers(data)
+            setUsers(data.data)
         })
     }, [])
 
-    const getUserId = async (id) => {
-        const {data} = await userService.getById(id);
-        setUser(data)
+    const getUserId = async (_id) => {
+        const {data} = await userService.getById(_id);
+        setUser(data.data)
     }
 
     return (
         <div>
             <div className={css.users}>
-                {users.map(user => <User key={user.id} user={user} getUserId={getUserId} getUser={getUser}/>)}
+                {users.map(user => <User key={user._id} user={user} getUserId={getUserId} getUser={getUser}/>)}
             </div>
             {user && <div>{user.id} -- {user.email}</div>}
         </div>

@@ -1,16 +1,18 @@
 import React from 'react';
 import css from "./SingleUser.module.css";
 
-export const SingleUser = ({user, getPostId}) => {
-    let { id, name, username, email } = user;
+export const SingleUser = ({user}) => {
+    let { _id, name, email, avatar } = user;
 
     return (
         <div className={css.user}>
             <div>
-                <p>ID: {id}</p>
+                <p>ID: {_id}</p>
                 <p>Name: {name}</p>
-                <p>Username: {username}</p>
                 <p>Email: {email}</p>
+                <div className={css.img}>
+                    <img src={avatar} alt=""/>
+                </div>
             </div>
         </div>
     );
