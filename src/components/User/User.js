@@ -1,20 +1,19 @@
-import React from 'react';
 
-import css from './User.module.css'
+const User = ({user, setUser, setUserIdForPost}) => {
 
-export const User = ({user, getUserId, getUser}) => {
-
-    const {id, name, username } = user;
+    const click = () => {
+        setUserIdForPost(false)
+        setUser(user)
+    }
 
 
     return (
-        <div className={css.user}>
-            <p>Name: {name}</p>
-            <p>Username: {username}</p>
-            <button className={css.button} onClick={() => {
-                getUserId(id)
-                getUser(user)
-            }}>Info</button>
+        <div>
+            {user.name}
+            <input type="button" value={'Show info'} onClick={click}/>
+            <hr/>
         </div>
     );
 };
+
+export {User};

@@ -1,22 +1,23 @@
-import css from './App.module.css';
-import {SingleUser, Users} from "./components";
-import {useState} from "react";
-import {Form1} from "./components/Form1/Form1";
-import {Form2} from "./components/Form2/Form2";
+import React, {useState} from 'react';
+import css from './App.module.css'
+import {Posts, UserInfo, Users} from "./components";
 
 
-function App() {
+const App = () => {
 
-    const [singleUser, setSingleUser] = useState(null);
+    const [user, setUser] = useState(null);
+    const [userIdForPost, setUserIdForPost] = useState(null);
 
     return (
-        <div className={css.users_posts}>
-            {/*{singleUser && <SingleUser user={singleUser}/>}*/}
-            {/*<Users getUser={setSingleUser}/>*/}
-            {/*<Form1/>*/}
-            <Form2/>
+        <div>
+            <div>
+                <Users setUser={setUser} setUserIdForPost={setUserIdForPost}/>
+                {user && <UserInfo user={user} key={user.id} setUserIdForPost={setUserIdForPost}/>}
+
+            </div>
+            {userIdForPost && <Posts userId={userIdForPost}/>}
         </div>
     );
-}
+};
 
 export default App;

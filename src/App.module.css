@@ -2,7 +2,4 @@
     box-sizing: border-box;
 }
 
-.users_posts {
-    display: flex;
-    flex-wrap: wrap;
-}
+
