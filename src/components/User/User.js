@@ -1,15 +1,20 @@
 import React from 'react';
 
-export const User = ({user}) => {
+import css from './User.module.css'
 
-    const {name, username, email } = user
+export const User = ({user, getUserId, getUser}) => {
+
+    const {id, name, username } = user;
+
 
     return (
-        <div>
-            <span>{name}</span>
-            <span>{username}</span>
-            <span>{email}</span>
-            <hr/>
+        <div className={css.user}>
+            <p>Name: {name}</p>
+            <p>Username: {username}</p>
+            <button className={css.button} onClick={() => {
+                getUserId(id)
+                getUser(user)
+            }}>Info</button>
         </div>
     );
 };

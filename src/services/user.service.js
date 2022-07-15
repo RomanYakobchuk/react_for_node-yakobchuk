@@ -1,0 +1,11 @@
+import {axiosService} from "./axios.service";
+import {urls} from "../constants";
+
+const userService = {
+    getAll: () => axiosService.get(urls.users),
+    getById: (id) => axiosService(`${urls.users}/${id}`),
+    getAllPosts: () => axiosService.get(urls.posts),
+    getByIdPosts: (userId) => axiosService(`${urls.posts}/${userId}`),
+}
+
+export {userService}
