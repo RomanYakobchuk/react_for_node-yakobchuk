@@ -1,0 +1,47 @@
+.img {
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    padding: 10px;
+    border: 5px double transparent;
+    background-image:
+            linear-gradient(white, white),
+            linear-gradient(to bottom, #de1323, #ff6200, #dea413, #fcb0b6);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    object-fit: cover;
+    border-image-slice: 1;
+    border-width: 2px;
+    transition: 300ms linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+.user {
+    width: 45%;
+    display: grid;
+    grid-template-columns: 30% 50%;
+    grid-template-rows: 250px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 100px;
+    font-size: 20px;
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+}
