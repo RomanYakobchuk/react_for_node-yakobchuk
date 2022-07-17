@@ -1,0 +1,11 @@
+.users {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    width: 50%;
+}
+.allUsers {
+    display: flex;
+    justify-content: space-between;
+}
