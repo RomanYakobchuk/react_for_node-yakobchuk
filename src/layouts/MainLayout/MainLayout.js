@@ -10,7 +10,7 @@ export const MainLayout = () => {
             <div className={css.header}>
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/users">Users</NavLink>
-                <NavLink to="/posts">Posts</NavLink>
+                <NavLink to="/posts?page=1">Posts</NavLink>
                 <NavLink to="/about">About</NavLink>
             </div>
             <hr/>

@@ -1,12 +1,18 @@
-import {useEffect, useState} from "react";
-import {Outlet, useParams} from 'react-router-dom'
+import {useContext, useEffect, useState} from "react";
+import {Outlet, useParams, useSearchParams} from 'react-router-dom'
 
 import {postService} from "../../services";
 import {Post} from "../../components";
+import {MyContext} from "../../index";
 
 export const PostsPage = () => {
 
     const [posts, setPosts] = useState(null);
+    // const value = useContext(MyContext);
+
+    const [query, setQuery] = useSearchParams({page: '1'});
+
+
 
     const {userId} = useParams();
 
@@ -15,9 +21,21 @@ export const PostsPage = () => {
             postService.getUserByIdPosts(userId).then(({data}) => setPosts(data))
         }
         else {
-            postService.getAll().then(({data}) => setPosts(data))
+            postService.getAll(query.get('page'), 10).then(({data}) => setPosts(data))
+            // console.log(value);
+            // value.name = "Olha"
         }
-    }, [userId])
+    }, [userId, query])
+
+    const nextPage = () => {
+        // let page = query.get('page');
+        // page = +page + 1
+        // setQuery({page:page.toString()})
+
+       const queryObject = Object.fromEntries(query.entries());
+       queryObject.page++
+        setQuery(queryObject)
+    }
 
     return (
         <div style={{display: "flex"}}>
@@ -26,6 +44,7 @@ export const PostsPage = () => {
                     ? posts.map((post) => <Post key={post.id} post={post} flag={!userId}/>)
                     : "Loading..."
                 }
+                <button onClick={()=> nextPage()}>Next</button>
             </div>
             <div>
                 <Outlet/>
