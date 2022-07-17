@@ -4,7 +4,7 @@ import {User} from "../User/User";
 import {userService} from "../../services";
 import css from './Users.module.css'
 
-const Users = ({newUser}) => {
+const Users = ({newUser, setUserForUpdate}) => {
 
     const [users, setUsers] = useState(null);
 
@@ -15,14 +15,14 @@ const Users = ({newUser}) => {
 
     useEffect(() => {
         if(newUser){
-            setUsers([...users, newUser])
+            setUsers(prevState => [...prevState, newUser])
         }
     }, [newUser])
 
     return (
         <div className={css.users}>
             {users
-                ? users.map((user) => <User key={user._id} user={user}/>)
+                ? users.map((user) => <User key={user._id} user={user} setUserForUpdate={setUserForUpdate}/>)
                 : "Loading..."
             }
         </div>
