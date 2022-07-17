@@ -1,22 +1,26 @@
-import React, {useState} from 'react';
-import css from './App.module.css'
-import {UserFrom, Users} from "./components";
+import {Routes, Route, Navigate} from 'react-router-dom';
+import {MainLayout} from "./layouts";
+import {AboutPage, HomePage, NotFoundPage, PostsPage, SinglePostPage, UsersPage} from "./pages";
+
+// import css from './App.module.css'
 
 
 const App = () => {
 
-    const [newUser, setNewUSer] = useState(null);
-
-    const [userForUpdate, setUserForUpdate] = useState(null);
 
     return (
-        <div>
-            <div className={css.divFrom}>
-                <UserFrom setNewUSer={setNewUSer} userForUpdate={userForUpdate}/>
-            </div>
-            <hr/>
-            <Users newUser={newUser} setUserForUpdate={setUserForUpdate}/>
-        </div>
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route index element={<Navigate to={'home'}/>}/>
+                <Route path={'home'} element={<HomePage/>}/>
+                <Route path={'users'} element={<UsersPage/>}/>
+                <Route path={'posts'} element={<PostsPage/>} >
+                    <Route path={':id'} element={<SinglePostPage/>}/>
+                </Route>
+                <Route path={'about'} element={<AboutPage/>}/>
+                <Route path={'*'} element={<NotFoundPage/>}/>
+            </Route>
+        </Routes>
 
     );
 };

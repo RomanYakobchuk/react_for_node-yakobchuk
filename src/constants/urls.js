@@ -1,8 +1,9 @@
-const baseURL = process.env.REACT_APP_API_HEROKU;
+// const baseURL = process.env.REACT_APP_API_HEROKU;
+const baseURL = process.env.REACT_APP_API;
 
 export const urls = {
     users: '/users',
-    login: '/auth/login'
+    posts: '/posts'
 }
 
 export default baseURL;
