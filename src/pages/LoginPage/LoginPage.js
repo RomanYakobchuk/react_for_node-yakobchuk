@@ -1,5 +1,5 @@
 import {useAuth} from "../../hooks";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useRef} from "react";
 
 export const LoginPage = () => {
@@ -7,17 +7,18 @@ export const LoginPage = () => {
     const {logIn} = useAuth();
     const {state} = useLocation();
     const name = useRef();
-    console.log(state);
+
+    const navigate = useNavigate();
 
     const login = () => {
         const userName = name.current.value;
-        // logIn(userName, () =>)
+        logIn(userName, () => navigate(state.pathname, {replace: true}))
     }
 
     return (
         <div>
             <input type="text" ref={name} placeholder={'name'}/>
-            <button>LogIn</button>
+            <button onClick={() => login()}>LogIn</button>
         </div>
     );
 };

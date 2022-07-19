@@ -12,11 +12,11 @@ export const AuthProvider = ({children}) => {
         cb()
     }
 
-    const logout = (cb) => {
+    const logOut = (cb) => {
         setUser(null)
         cb()
     }
-    const values = {user, logIn, logout}
+    const values = {user, logIn, logOut}
 
     return (
         <AuthContext.Provider value={values}>
