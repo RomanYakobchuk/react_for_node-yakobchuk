@@ -1,48 +1,41 @@
-import {Routes, Route, Navigate} from 'react-router-dom';
-import {MainLayout} from "./layouts";
-import {
-    AboutPage,
-    HomePage,
-    LoginPage,
-    NotFoundPage,
-    PostsPage,
-    SinglePostPage,
-    SingleUserPage,
-    UsersPage
-} from "./pages";
-import {RequireAuth} from "./hoc";
+import {useReducer} from "react";
 
-// import css from './App.module.css'
 
+const init = (initCount) => {  // initCount - initializerArg
+    return {count1: initCount, count2: initCount} //Object - state
+}
+
+const reducer = (state, action)=> { // action - object in dispatch
+    switch (action.type) {
+        case 'inc':
+            return {...state, count1: state.count1+1}
+        case 'dec':
+            return {...state, count1: state.count1-1}
+        case 'res':
+            return {...state, count1: 0}
+        case 'set':
+            return {...state, count1: action.payload}
+    }
+}
 
 const App = () => {
+    
+    const [state, dispatch] = useReducer(reducer, 0, init);
 
-
+    // const inc = () => {
+    //     dispatch({type: 'inc'})
+    // }
+    
     return (
-        <Routes>
-            <Route path={'/'} element={<MainLayout/>}>
-                <Route index element={<Navigate to={'home'}/>}/>
-                <Route path={'home'} element={<HomePage/>}/>
-                <Route path={'users'} element={
-                    <RequireAuth>
-                        <UsersPage/>
-                    </RequireAuth>
-                }>
-                    <Route path={':userId'} element={<SingleUserPage/>}>
-                        <Route path={'posts'} element={<PostsPage/>}/>
-                    </Route>
-                </Route>
-                <Route path={'posts'} element={<PostsPage/>}>
-                    <Route path={':id'} element={<SinglePostPage/>}>
-                        <Route path={'posts'} element={<PostsPage/>}/>
-                    </Route>
-                </Route>
-                <Route path={'login'} element={<LoginPage/>}/>
-                <Route path={'about'} element={<AboutPage/>}/>
-                <Route path={'*'} element={<NotFoundPage/>}/>
-            </Route>
-        </Routes>
-
+        <div>
+            <div>
+                {state.count1}
+                <button onClick={() => dispatch({type: 'inc'})}>inc</button>
+                <button onClick={() => dispatch({type: 'dec'})}>dec</button>
+                <button onClick={() => dispatch({type: 'res'})}>reset</button>
+                <button onClick={() => dispatch({type: 'set', payload: 10})}>setTo10</button>
+            </div>
+        </div>
     );
 };
 
