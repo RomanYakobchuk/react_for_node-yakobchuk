@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {useRef} from "react";
+import {ADD, useCatReducer} from "./reducers";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const catRef = useRef();
+
+    const [state, dispatch] = useCatReducer();
+
+    const addCat = () => {
+        const newCat = catRef.current.value;
+        dispatch({type: ADD, payload: {cat: newCat}})
+    }
+
+    return (
+        <div>
+            <div>
+                <input type="text" ref={catRef} placeholder={'cat name'}/>
+                <button onClick={() => addCat()}>Add</button>
+            </div>
+            <hr/>
+            <div>
+                {state.map(cat=> <div key={cat.id}>{cat.name}</div>)}
+            </div>
+        </div>
+    );
 }
 
 export default App;
