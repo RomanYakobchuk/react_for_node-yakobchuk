@@ -1,5 +1,4 @@
 import {useForm} from "react-hook-form";
-// import {useEffect} from "react";
 import {joiResolver} from "@hookform/resolvers/joi";
 
 import {userService} from "../../services";
@@ -11,18 +10,6 @@ export const UserFrom = ({setNewUSer, userForUpdate}) => {
 
     const {register, reset, handleSubmit, formState:{errors}} = useForm({resolver: joiResolver(userValidator), mode: "onTouched"}); //виконується useState, return, useEffect
 
-    // useEffect(() => {
-    //     if(userForUpdate){
-    //         const {name, username, phone, email, password, age, avatar} = userForUpdate;
-    //         setValue('name', name)
-    //         setValue('username', username)
-    //         setValue('phone', phone)
-    //         setValue('password', password)
-    //         setValue('email', email)
-    //         setValue('age', age)
-    //         setValue('avatar', avatar[0])
-    //     }
-    // }, [userForUpdate])
 
     const addUser = async (user) => {
         try {
@@ -45,7 +32,6 @@ export const UserFrom = ({setNewUSer, userForUpdate}) => {
         }
     }
 
-    // console.log(formError.error)
 
 
     return (

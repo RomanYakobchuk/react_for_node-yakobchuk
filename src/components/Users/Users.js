@@ -19,6 +19,7 @@ const Users = ({newUser, setUserForUpdate}) => {
         }
     }, [newUser])
 
+    console.log(users)
     return (
         <div className={css.users}>
             {users
