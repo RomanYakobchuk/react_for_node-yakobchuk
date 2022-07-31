@@ -7,7 +7,6 @@ const User = ({user, setUserForUpdate}) => {
     const {_id, username, name, age, avatar} = user;
 
     const deleteUser = async () => {
-        // await userService.login()
         await userService.deleteUserById(_id)
     }
 
