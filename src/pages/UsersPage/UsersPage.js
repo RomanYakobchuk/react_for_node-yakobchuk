@@ -10,14 +10,14 @@ export const UsersPage = () => {
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
-        userService.getAllUsers().then(({data}) => setUsers(data))
+        userService.getAllUsers().then(({data}) => setUsers(data.data))
     }, [])
 
     return (
         <div className={css.allUsers}>
             <div className={css.users}>
                 {users
-                    ? users.map((user) => <User key={user.id} user={user}/>)
+                    ? users.map((user) => <User key={user._id} user={user}/>)
                     : <Loading/>
                 }
             </div>

@@ -32,11 +32,11 @@ const App = () => {
                         <Route path={'posts'} element={<PostsPage/>}/>
                     </Route>
                 </Route>
-                <Route path={'posts'} element={<PostsPage/>}>
-                    <Route path={':id'} element={<SinglePostPage/>}>
-                        <Route path={'posts'} element={<PostsPage/>}/>
-                    </Route>
-                </Route>
+                {/*<Route path={'posts'} element={<PostsPage/>}>*/}
+                {/*    <Route path={':id'} element={<SinglePostPage/>}>*/}
+                {/*        <Route path={'posts'} element={<PostsPage/>}/>*/}
+                {/*    </Route>*/}
+                {/*</Route>*/}
                 <Route path={'login'} element={<LoginPage/>}/>
                 <Route path={'about'} element={<AboutPage/>}/>
                 <Route path={'*'} element={<NotFoundPage/>}/>
