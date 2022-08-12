@@ -14,7 +14,13 @@ const getAll = createAsyncThunk(
     }
 );
 
-
+const create = createAsyncThunk(
+    'create',
+    async ({user}) => {
+        const {data} = await userService.create(user);
+        return data
+    }
+)
 
 const userSlice = createSlice({
     name: "userSlice",
@@ -34,6 +40,12 @@ const userSlice = createSlice({
             state.status = 'rejected'
 
         },
+        [create.fulfilled]:(state, action) => {
+            state.users.push(action.payload)
+        },
+        [create.rejected]:(state, action) => {
+            console.log('error');
+        },
 
     }
 });
@@ -41,7 +53,8 @@ const userSlice = createSlice({
 const {reducer: userReducer, actions } = userSlice;
 
 const userActions = {
-    getAll
+    getAll,
+    create
 }
 
 export {

@@ -1,8 +1,10 @@
-import {Users} from "./components";
+import {UserForm, Users} from "./components";
 
 function App() {
     return (
         <div>
+            <UserForm/>
+            <hr/>
             <Users/>
         </div>
     );
