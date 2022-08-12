@@ -1,0 +1,72 @@
+.div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+.divContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+}
+
+.formName {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+}
+.formName > div {
+    border-bottom: 1px solid black;
+    /*padding: 20px;*/
+    margin: 10px;
+}
+.btn {
+    cursor: pointer;
+    color: cornflowerblue;
+    font-size: 30px;
+}
+
+.btn:hover {
+    color: red;
+}
+
+.buttonAdd {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: 100ms linear;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.buttonAdd:disabled:hover {
+    cursor: not-allowed;
+    background-color: white;
+    color: black;
+}
+
+.buttonAdd:hover {
+    background-color: black;
+    color: white;
+}
+
+.inputAdd {
+    /*resize: none;*/
+    /*width: 200px;*/
+    /*min-height: 50px;*/
+    border: 2px solid black;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+
+}
+.desc {
+    width: 400px;
+}

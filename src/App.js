@@ -1,12 +1,20 @@
-import {Counter, Form, Users} from "./components";
+import {Forms, FormsForm} from "./components";
+
+import './App.css'
 
 function App() {
 
     return (
         <div>
-            <Counter/>
-            <Form/>
-            <Users/>
+            <div className="flex">
+                <FormsForm/>
+                {/*<DogsForm/>*/}
+            </div>
+            <hr/>
+            <div className="flex">
+                <Forms/>
+                {/*<Dogs/>*/}
+            </div>
         </div>
     );
 }

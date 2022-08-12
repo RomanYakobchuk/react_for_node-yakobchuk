@@ -1,14 +1,11 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import counterReducer from "./slices/counter-slice";
-import userReducer from "./slices/user-slice";
+
+import formsReducer from './slices/forms.slice';
 
 const rootReducers = combineReducers({
-    counter: counterReducer,
-    user: userReducer
+    forms: formsReducer,
 });
 
-const store = configureStore({
+export const store = configureStore({
     reducer: rootReducers
 });
-
-export default store;
