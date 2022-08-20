@@ -1,12 +1,14 @@
-const baseURL = process.env.REACT_APP_API_HEROKU;
-// const baseURL = `http://localhost:5555`;
+const baseURL = process.env.REACT_APP_API;
 
 const urls = {
-    users: '/users'
+    login: '/auth/login',
+    register: '/auth/register',
+    allUsers: '/users',
+    refreshToken: '/auth/refreshToken'
+
 }
 
-export default baseURL;
-
 export {
+    baseURL,
     urls
 }

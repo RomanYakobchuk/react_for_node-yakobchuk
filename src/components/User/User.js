@@ -1,10 +1,10 @@
-
-
-
-export const User = ({user: {_id, name, username, age}}) => {
+export const User = ({user: {name, username, age}}) => {
     return (
         <div>
-            {_id} -- {name ? name : "[no name]"} -- {username ? username : "[no username]"} -- {age ? age : "[no age]"}
+            <div>name: {name}</div>
+            <div>username: {username}</div>
+            <div>age: {age}</div>
+            <hr/>
         </div>
     );
 };
