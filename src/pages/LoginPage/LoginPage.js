@@ -1,10 +1,10 @@
-import {AuthForm} from "../../components";
 import {Link} from "react-router-dom";
+import {LoginForm} from "../../components";
 
 export const LoginPage = () => {
     return (
         <div>
-            <AuthForm/>
+            <LoginForm/>
         </div>
     );
 };

@@ -1,9 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {authService} from "../../services";
+import {authService, userService} from "../../services";
 
 const initialState = {
     isAuth: null,
-    loginError: null
+    loginError: null,
+    registerError: null,
 };
 
 const login = createAsyncThunk(
@@ -14,12 +15,23 @@ const login = createAsyncThunk(
     }
 );
 
+const register = createAsyncThunk(
+    'register',
+    async ({user}) => {
+        const {data} = await userService.register(user);
+        return data
+    }
+);
+
 const authSlice = createSlice({
     name: 'authSlice',
     initialState,
     reducers: {
         setAuth: state => {
             state.isAuth = true
+        },
+        setError: state => {
+            state.loginError = false
         }
     },
     extraReducers: (builder) => {
@@ -32,17 +44,26 @@ const authSlice = createSlice({
                 localStorage.setItem('access_token', access_token);
                 localStorage.setItem('refresh_token', refresh_token);
             })
-            .addCase(login.rejected, (state) => {
-                state.loginError = true;
+            .addCase(login.rejected, (state, action) => {
+                // console.log(action)
+                state.isAuth = false;
+                state.loginError = action?.error;
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.isAuth = false;
+                console.log(action)
+                // state.registerError = action
             })
     }
 });
 
-const {reducer: authReducer, actions: {setAuth}} = authSlice;
+const {reducer: authReducer, actions: {setAuth, setError}} = authSlice;
 
 const authActions = {
     login,
-    setAuth
+    register,
+    setAuth,
+    setError
 }
 
 export {
