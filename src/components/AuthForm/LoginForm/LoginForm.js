@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {joiResolver} from "@hookform/resolvers/joi";
 
 import '../authForm.css';
+import './loginForm.css';
 import {authActions} from "../../../redux";
 import {userValidatorForLogin} from "../../../validators";
 import {userService} from "../../../services";
