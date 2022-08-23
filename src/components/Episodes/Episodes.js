@@ -16,7 +16,7 @@ export const Episodes = () => {
     // console.log(location)
     useEffect(() => {
         dispatch(episodeActions.getAll({page: query.get('page')}))
-    }, [query])
+    }, [dispatch, query])
 
     const nextPage = () => {
         const nextPage = +query.get('page') + 1;

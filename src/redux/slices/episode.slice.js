@@ -5,7 +5,8 @@ const initialState = {
     pages: null,
     next: null,
     prev: null,
-    episodes: []
+    episodes: [],
+    currentEpisode: null
 };
 
 const getAll = createAsyncThunk(
@@ -19,7 +20,12 @@ const getAll = createAsyncThunk(
 const episodeSlice = createSlice({
     name: 'episodeSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        currentEpisode: (state, action) => {
+            const {episodeName} = action.payload;
+            state.currentEpisode = episodeName
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
@@ -32,10 +38,11 @@ const episodeSlice = createSlice({
     }
 });
 
-const {reducer: episodeReducer } = episodeSlice;
+const {reducer: episodeReducer, actions: {currentEpisode} } = episodeSlice;
 
 const episodeActions = {
     getAll,
+    currentEpisode
 }
 
 export {

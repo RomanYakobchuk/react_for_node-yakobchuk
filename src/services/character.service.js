@@ -4,7 +4,7 @@ import {urls} from "../constants";
 const characterService = {
     getByCharacterList: (characters) => {
         const ids = characters.map(item => item.split('/').slice(-1)[0]).join(', ');
-        return axiosService.get(`${urls.episode}/${ids}`)
+        return axiosService.get(`${urls.character}/${ids}`)
     }
 }
 
