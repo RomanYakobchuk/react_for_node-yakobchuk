@@ -1,12 +1,12 @@
 import {useForm} from "react-hook-form";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {joiResolver} from "@hookform/resolvers/joi";
 
 import '../authForm.css';
 import {userValidatorForRegister} from "../../../validators";
-import {userService} from "../../../services";
+import {axiosService, userService} from "../../../services";
 import {authActions} from "../../../redux";
 
 export const RegisterForm = () => {
@@ -30,7 +30,18 @@ export const RegisterForm = () => {
     // }, [pathname])
     const submit = async (user) => {
         try {
-            await dispatch(authActions.register({user}))
+            // const response = await userService.register(user);
+            // console.log(response)
+            const newVar = await dispatch(authActions.register({user}));
+            console.log(newVar)
+            // axiosService.interceptors.response.use((config: { withCredentials: true }) => {
+            //         return config
+            //     },
+            //     async (error) => {
+            //         // console.log(error.response.data.error)
+            //     }
+            // );
+
             // await userService.register(user);
             // console.log(error)
             // navigate('/login');
@@ -38,6 +49,7 @@ export const RegisterForm = () => {
             console.log(e)
         }
     }
+
 
     return (
         <form onSubmit={handleSubmit(submit)} className={'authForm'}>

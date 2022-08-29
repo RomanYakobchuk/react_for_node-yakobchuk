@@ -3,6 +3,9 @@ import {createBrowserHistory} from 'history';
 
 import {baseURL} from "../constants";
 import {authService} from "./auth.service";
+import {useDispatch, useSelector} from "react-redux";
+import {authActions} from "../redux";
+import {useLocation} from "react-router-dom";
 
 const history = createBrowserHistory();
 const axiosService = axios.create({
@@ -20,12 +23,13 @@ axiosService.interceptors.request.use((config) => {
     return config
 });
 
+
 axiosService.interceptors.response.use(
     (config: { withCredentials: true }) => {
         return config
     },
     async (error) => {
-        console.log(error)
+        // console.log(error)
         if (error.response?.status === 401 && error.config && !isRefreshing) {
             isRefreshing = true;
             // const refresh = localStorage.getItem('refresh_token');
@@ -34,19 +38,22 @@ axiosService.interceptors.response.use(
                 const {user, access_token, refresh_token} = data;
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('access_token', access_token);
-                localStorage.setItem('refresh_token', refresh_token);
+                // localStorage.setItem('refresh_token', refresh_token);
                 isRefreshing = false;
             } catch (e) {
                 // console.log(e)
                 localStorage.removeItem('user')
                 localStorage.removeItem('access_token')
-                localStorage.removeItem('refresh_token')
+                // localStorage.removeItem('refresh_token')
                 history.replace(`/login?expSession=true`)
             }
             return axiosService.request(error.config)
         }
-    })
+        return Promise.reject(error)
+    }
+)
 
 export {
-    axiosService
+    axiosService,
+    history
 }

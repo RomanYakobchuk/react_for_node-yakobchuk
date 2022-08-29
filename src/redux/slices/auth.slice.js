@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {authService, userService} from "../../services";
 
 const initialState = {
@@ -15,14 +16,17 @@ const login = createAsyncThunk(
     }
 );
 
+
 const register = createAsyncThunk(
     'register',
     async ({user}) => {
-        const {data} = await userService.register(user);
-        return data
+        const data = await userService.register(user);
+        // console.log(data)
+        const {response} = data;
+        console.log(response)
+        return response
     }
 );
-
 const authSlice = createSlice({
     name: 'authSlice',
     initialState,
@@ -49,11 +53,15 @@ const authSlice = createSlice({
                 state.isAuth = false;
                 state.loginError = action?.error;
             })
+            .addCase(register.fulfilled, (state, action) => {
+
+            })
             .addCase(register.rejected, (state, action) => {
                 state.isAuth = false;
                 console.log(action)
                 // state.registerError = action
             })
+
     }
 });
 
@@ -63,7 +71,8 @@ const authActions = {
     login,
     register,
     setAuth,
-    setError
+    setError,
+
 }
 
 export {

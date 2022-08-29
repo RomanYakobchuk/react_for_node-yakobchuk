@@ -15,7 +15,6 @@ function App() {
 
     const {isAuth} = useSelector(state => state.auth);
 
-    // console.log(isAuth)
     return (
         <Routes>
             <Route path={'/'} element={

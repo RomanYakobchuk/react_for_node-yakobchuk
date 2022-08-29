@@ -24,6 +24,7 @@ export const LoginForm = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    console.log(loginError)
     // useEffect(() => {
     //     pathname === '/register' ? setIsLogin(false) : setIsLogin(true)
     // }, [pathname])
@@ -34,6 +35,8 @@ export const LoginForm = () => {
             // reset(false)
             if (!loginError) {
                 navigate('/');
+            }else{
+
             }
         } catch (e) {
             console.log(e)
