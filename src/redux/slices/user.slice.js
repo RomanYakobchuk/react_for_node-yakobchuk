@@ -20,6 +20,7 @@ const createAsync = createAsyncThunk(
     async ({user}, {dispatch ,rejectWithValue}) => {
         try {
             const {data} = await userService.create(user);
+            // dispatch(create({}))
             dispatch(create({user: data}))
 
         } catch (e) {
