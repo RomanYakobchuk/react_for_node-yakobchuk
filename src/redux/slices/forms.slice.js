@@ -13,12 +13,10 @@ const formsSlice = createSlice({
                 const newForm = {name, desc, id: new Date().getTime()};
                 state.forms.push(newForm);
         },
-
         deleteForm: (state, action) => {
             const {id} = action.payload;
             const index = state.forms.findIndex((form) => form.id === id);
             state.forms.splice(index, 1);
-
         },
 
         setFormForUpdate: (state, action) => {

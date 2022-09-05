@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {Delete, UpdateSharp} from '@mui/icons-material';
+// import {Delete, UpdateSharp} from '@mui/icons-material';
 
 import {actionsForms} from "../redux";
 import './index.css'
@@ -37,15 +37,15 @@ export const Form = ({form}) => {
                 {/*            onClick={save}>{"Add field"}</button>*/}
 
                 {/*</div>*/}
-                <div className={'div'}>
-                    <label htmlFor="{'deleteCat'}">Delete field</label>
-                    <Delete className={'btn'} id={'deleteCat'} onClick={deleteCat}/>
-                </div>
-                <div className={'div'}>
-                    <label htmlFor="{'UpdateCat'}">Update value</label>
-                    <UpdateSharp className={'btn'} id={'updateCat'}
-                                 onClick={() => dispatch(actionsForms.setFormForUpdate({form}))}/>
-                </div>
+                {/*<div className={'div'}>*/}
+                {/*    <label htmlFor="{'deleteCat'}">Delete field</label>*/}
+                {/*    <Delete className={'btn'} id={'deleteCat'} onClick={deleteCat}/>*/}
+                {/*</div>*/}
+                {/*<div className={'div'}>*/}
+                {/*    <label htmlFor="{'UpdateCat'}">Update value</label>*/}
+                {/*    <UpdateSharp className={'btn'} id={'updateCat'}*/}
+                {/*                 onClick={() => dispatch(actionsForms.setFormForUpdate({form}))}/>*/}
+                {/*</div>*/}
             </div>
         </div>
     );
